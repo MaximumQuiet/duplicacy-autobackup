@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM multiarch/debian-debootstrap:arm64-stretch-slim
 MAINTAINER Maxim Kuznetsov <maximumquiet@gmail.com>
 
 #--
@@ -37,7 +37,6 @@ ENV BACKUP_SCHEDULE='* * * * *' \
 #--
 #-- Other steps
 #--
-RUN apk --no-cache add ca-certificates && update-ca-certificates
 RUN wget https://github.com/gilbertchen/duplicacy/releases/download/v${DUPLICACY_VERSION}/duplicacy_linux_arm64_${DUPLICACY_VERSION} -O /usr/bin/duplicacy && \
     chmod +x /usr/bin/duplicacy
 
